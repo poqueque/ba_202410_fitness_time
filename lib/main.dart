@@ -1,4 +1,5 @@
 import 'package:fitness_time/screens/profile.dart';
+import 'package:fitness_time/styles/app_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -17,8 +18,12 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         fontFamily: GoogleFonts.montserrat().fontFamily,
         useMaterial3: true,
+        appBarTheme: const AppBarTheme(
+          backgroundColor: AppStyles.persianPink,
+          centerTitle: true,
+        ),
       ),
-      home: const Profile(),
+      home: const ProfileScreen(),
     );
   }
 }
