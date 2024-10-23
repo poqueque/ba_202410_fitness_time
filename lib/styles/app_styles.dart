@@ -13,6 +13,9 @@ class AppStyles {
     color: grey,
   );
   static const TextStyle cardData = TextStyle(fontSize: 20);
+  static const subtitle = TextStyle(
+    color: Colors.black45,
+  );
 
   static const Widget bigSpace = SizedBox(
     height: 32,
@@ -22,5 +25,4 @@ class AppStyles {
     height: 16,
     width: 16,
   );
-
 }

@@ -1,31 +1,43 @@
-import 'package:fitness_time/styles/app_styles.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+
+import '../models/activity.dart';
+import '../styles/app_styles.dart';
 
 class ActivityCard extends StatelessWidget {
-  const ActivityCard({
-    super.key,
-    required this.icon,
-    required this.activityType,
-    required this.value,
-  });
-
-  final IconData icon;
-  final String activityType;
-  final String value;
+  const ActivityCard({super.key, required this.activity});
+  final Activity activity;
 
   @override
   Widget build(BuildContext context) {
+    final DateFormat formatter = DateFormat('dd MMM yyyy - HH:mm');
+    final String formattedDate = formatter.format(activity.date);
+
     return Card(
-      elevation: 4,
-      color: AppStyles.heliotrope,
       child: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: Column(
+        child: Row(
           children: [
-            Icon(icon),
-            Text(activityType),
+            const Padding(
+              padding: EdgeInsets.all(8.0),
+              child: Icon(
+                Icons.run_circle_outlined,
+                size: 32,
+              ),
+            ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  activity.type,
+                  style: AppStyles.cardData,
+                ),
+                Text(formattedDate),
+              ],
+            ),
+            const Spacer(),
             Text(
-              value,
+              "${activity.distance} km",
               style: AppStyles.cardData,
             ),
           ],

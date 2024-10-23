@@ -1,5 +1,5 @@
 import 'package:fitness_time/styles/app_styles.dart';
-import 'package:fitness_time/widgets/activity_card.dart';
+import 'package:fitness_time/widgets/data_card.dart';
 import 'package:flutter/material.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -35,17 +35,17 @@ class ProfileScreen extends StatelessWidget {
           const Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              ActivityCard(
+              DataCard(
                 icon: Icons.access_alarm,
                 activityType: "Time",
                 value: "2h 45",
               ),
-              ActivityCard(
+              DataCard(
                 icon: Icons.place,
                 activityType: "Km",
                 value: "212,4",
               ),
-              ActivityCard(
+              DataCard(
                 icon: Icons.directions_run,
                 activityType: "Activities",
                 value: "42",
