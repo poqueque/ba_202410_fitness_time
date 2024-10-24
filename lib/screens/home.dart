@@ -47,7 +47,26 @@ class _HomeState extends State<Home> {
                   ],
                 ),
               ),
-            for (var activity in activities) ActivityCard(activity: activity),
+            for (var activity in activities)
+              Dismissible(
+                key: UniqueKey(),
+                onDismissed: (direction) {
+                  activities.remove(activity);
+                  setState(() {});
+                },
+                child: ActivityCard(
+                    activity: activity,
+                    onTap: () async {
+                      var receivedActivity = await Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => NewActivity(
+                                    activity: activity,
+                                  )));
+                      activities.add(receivedActivity);
+                      setState(() {});
+                    }),
+              ),
           ],
         ),
       ),
@@ -55,7 +74,9 @@ class _HomeState extends State<Home> {
         onPressed: () async {
           var activity = await Navigator.push(context,
               MaterialPageRoute(builder: (context) => const NewActivity()));
-          activities.add(activity);
+          if (activity != null) {
+            activities.add(activity);
+          }
           setState(() {});
         },
         child: const Icon(Icons.add),

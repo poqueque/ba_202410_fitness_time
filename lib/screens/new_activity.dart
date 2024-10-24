@@ -2,7 +2,9 @@ import 'package:fitness_time/models/activity.dart';
 import 'package:flutter/material.dart';
 
 class NewActivity extends StatefulWidget {
-  const NewActivity({super.key});
+  const NewActivity({super.key, this.activity});
+
+  final Activity? activity;
 
   @override
   State<NewActivity> createState() => _NewActivityState();
@@ -11,6 +13,13 @@ class NewActivity extends StatefulWidget {
 class _NewActivityState extends State<NewActivity> {
   TextEditingController activityController = TextEditingController();
   TextEditingController distanceController = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    activityController.text = widget.activity?.type ?? "";
+    distanceController.text = widget.activity?.distance.toString() ?? "";
+  }
 
   @override
   Widget build(BuildContext context) {
